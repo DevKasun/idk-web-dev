@@ -1,11 +1,10 @@
 @import 'tailwindcss';
 @plugin "@tailwindcss/typography";
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 
 /* ─── Design Tokens ────────────────────────────────────────────────── */
 @theme {
-	--font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif;
-	--font-mono: 'JetBrains Mono', ui-monospace, monospace;
+	--font-sans: sans-serif;
+	--font-mono: monospace;
 }
 
 /* ─── Color System ─────────────────────────────────────────────────── */
@@ -16,7 +15,10 @@
 	--bg: light-dark(#f0f0f5, #0c0c12);
 	--bg-subtle: light-dark(#e8e8f0, #141420);
 	--surface: light-dark(rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.04));
-	--surface-hover: light-dark(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.07));
+	--surface-hover: light-dark(
+		rgba(255, 255, 255, 0.9),
+		rgba(255, 255, 255, 0.07)
+	);
 	--border: light-dark(rgba(0, 0, 0, 0.08), rgba(255, 255, 255, 0.08));
 	--border-hover: light-dark(rgba(0, 0, 0, 0.18), rgba(255, 255, 255, 0.18));
 
@@ -30,32 +32,62 @@
 	--header-border: light-dark(rgba(0, 0, 0, 0.06), rgba(255, 255, 255, 0.06));
 
 	/* Tag colors */
-	--tag-css-bg: light-dark(rgba(59, 130, 246, 0.12), rgba(59, 130, 246, 0.15));
+	--tag-css-bg: light-dark(
+		rgba(59, 130, 246, 0.12),
+		rgba(59, 130, 246, 0.15)
+	);
 	--tag-css-text: light-dark(#1d4ed8, #60a5fa);
-	--tag-css-border: light-dark(rgba(59, 130, 246, 0.25), rgba(59, 130, 246, 0.3));
+	--tag-css-border: light-dark(
+		rgba(59, 130, 246, 0.25),
+		rgba(59, 130, 246, 0.3)
+	);
 
 	--tag-js-bg: light-dark(rgba(245, 158, 11, 0.12), rgba(245, 158, 11, 0.15));
 	--tag-js-text: light-dark(#b45309, #fbbf24);
-	--tag-js-border: light-dark(rgba(245, 158, 11, 0.25), rgba(245, 158, 11, 0.3));
+	--tag-js-border: light-dark(
+		rgba(245, 158, 11, 0.25),
+		rgba(245, 158, 11, 0.3)
+	);
 
-	--tag-html-bg: light-dark(rgba(249, 115, 22, 0.12), rgba(249, 115, 22, 0.15));
+	--tag-html-bg: light-dark(
+		rgba(249, 115, 22, 0.12),
+		rgba(249, 115, 22, 0.15)
+	);
 	--tag-html-text: light-dark(#c2410c, #fb923c);
-	--tag-html-border: light-dark(rgba(249, 115, 22, 0.25), rgba(249, 115, 22, 0.3));
+	--tag-html-border: light-dark(
+		rgba(249, 115, 22, 0.25),
+		rgba(249, 115, 22, 0.3)
+	);
 
-	--tag-api-bg: light-dark(rgba(168, 85, 247, 0.12), rgba(168, 85, 247, 0.15));
+	--tag-api-bg: light-dark(
+		rgba(168, 85, 247, 0.12),
+		rgba(168, 85, 247, 0.15)
+	);
 	--tag-api-text: light-dark(#7e22ce, #c084fc);
-	--tag-api-border: light-dark(rgba(168, 85, 247, 0.25), rgba(168, 85, 247, 0.3));
+	--tag-api-border: light-dark(
+		rgba(168, 85, 247, 0.25),
+		rgba(168, 85, 247, 0.3)
+	);
 
 	/* Status colors */
-	--status-stable-bg: light-dark(rgba(34, 197, 94, 0.1), rgba(34, 197, 94, 0.12));
+	--status-stable-bg: light-dark(
+		rgba(34, 197, 94, 0.1),
+		rgba(34, 197, 94, 0.12)
+	);
 	--status-stable-text: light-dark(#15803d, #4ade80);
 	--status-stable-dot: #22c55e;
 
-	--status-experimental-bg: light-dark(rgba(251, 191, 36, 0.1), rgba(251, 191, 36, 0.12));
+	--status-experimental-bg: light-dark(
+		rgba(251, 191, 36, 0.1),
+		rgba(251, 191, 36, 0.12)
+	);
 	--status-experimental-text: light-dark(#a16207, #fbbf24);
 	--status-experimental-dot: #f59e0b;
 
-	--status-wip-bg: light-dark(rgba(148, 163, 184, 0.1), rgba(148, 163, 184, 0.12));
+	--status-wip-bg: light-dark(
+		rgba(148, 163, 184, 0.1),
+		rgba(148, 163, 184, 0.12)
+	);
 	--status-wip-text: light-dark(#475569, #94a3b8);
 	--status-wip-dot: #94a3b8;
 
@@ -63,7 +95,12 @@
 	--accent-start: #6366f1;
 	--accent-mid: #a855f7;
 	--accent-end: #ec4899;
-	--accent-gradient: linear-gradient(135deg, var(--accent-start), var(--accent-mid), var(--accent-end));
+	--accent-gradient: linear-gradient(
+		135deg,
+		var(--accent-start),
+		var(--accent-mid),
+		var(--accent-end)
+	);
 
 	/* Glow */
 	--glow-card: light-dark(
@@ -80,7 +117,9 @@
 html {
 	background: var(--bg);
 	color: var(--text);
-	transition: background 0.2s ease, color 0.2s ease;
+	transition:
+		background 0.2s ease,
+		color 0.2s ease;
 }
 
 body,
@@ -149,8 +188,12 @@ body,
 }
 
 @keyframes orb-drift {
-	0% { transform: translate(0, 0) scale(1); }
-	100% { transform: translate(30px, 20px) scale(1.08); }
+	0% {
+		transform: translate(0, 0) scale(1);
+	}
+	100% {
+		transform: translate(30px, 20px) scale(1.08);
+	}
 }
 
 /* ─── Cursor blink ─────────────────────────────────────────────────── */
@@ -166,13 +209,22 @@ body,
 }
 
 @keyframes blink {
-	0%, 100% { opacity: 1; }
-	50% { opacity: 0; }
+	0%,
+	100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
 }
 
 /* ─── Filter pill active state ─────────────────────────────────────── */
 .filter-pill {
-	transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+	transition:
+		background 0.15s ease,
+		color 0.15s ease,
+		box-shadow 0.15s ease,
+		transform 0.15s ease;
 }
 
 .filter-pill:hover {
@@ -202,7 +254,9 @@ body,
 	transform: translateY(-4px);
 	border-color: var(--border-hover);
 	background: var(--surface-hover);
-	box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15), var(--glow-card);
+	box-shadow:
+		0 16px 40px rgba(0, 0, 0, 0.15),
+		var(--glow-card);
 }
 
 /* ─── Gradient text ────────────────────────────────────────────────── */
