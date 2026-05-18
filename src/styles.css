@@ -91,16 +91,10 @@
 	--status-wip-text: light-dark(#475569, #94a3b8);
 	--status-wip-dot: #94a3b8;
 
-	/* Accent gradient */
-	--accent-start: #6366f1;
-	--accent-mid: #a855f7;
-	--accent-end: #ec4899;
-	--accent-gradient: linear-gradient(
-		135deg,
-		var(--accent-start),
-		var(--accent-mid),
-		var(--accent-end)
-	);
+	/* main accent color */
+	--accent-start: #9d52ff;
+	--accent-end: #5100bb;
+	--accent-color: #6f00ff;
 
 	/* Glow */
 	--glow-card: light-dark(
@@ -261,7 +255,7 @@ body,
 
 /* ─── Gradient text ────────────────────────────────────────────────── */
 .gradient-text {
-	background: var(--accent-gradient);
+	background: var(--accent-color);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	background-clip: text;

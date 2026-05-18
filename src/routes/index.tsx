@@ -32,7 +32,7 @@ function HomePage() {
 				<div className='page-container relative z-10'>
 					{/* Eyebrow */}
 					<div className='mb-4 inline-flex items-center gap-2 rounded-full border border-(--border) bg-(--surface) px-3 py-1 text-xs font-semibold text-(--text-muted) backdrop-blur'>
-						<span className='h-1.5 w-1.5 rounded-full bg-(--accent-start) animate-pulse' />
+						<span className='h-2 w-2 rounded-full bg-(--accent-start) animate-pulse' />
 						Experimenting with modern web technologies
 					</div>
 
