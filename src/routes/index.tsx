@@ -23,7 +23,7 @@ function HomePage() {
 	return (
 		<main>
 			{/* ─── Hero ───────────────────────────────────────────────── */}
-			<section className='relative overflow-hidden border-b border-(--border) py-16 sm:py-20'>
+			<section className='relative hero-banner overflow-hidden py-16 sm:py-20'>
 				{/* Gradient orbs */}
 				<div className='hero-orb hero-orb-1' aria-hidden='true' />
 				<div className='hero-orb hero-orb-2' aria-hidden='true' />
