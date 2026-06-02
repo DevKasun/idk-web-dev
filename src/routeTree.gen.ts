@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ExperimentsCssAnchorPositionRouteImport } from './routes/experiments/css-anchor-position'
 import { Route as ExperimentsSlugRouteImport } from './routes/experiments/$slug'
 
 const AboutRoute = AboutRouteImport.update({
@@ -23,6 +24,12 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ExperimentsCssAnchorPositionRoute =
+  ExperimentsCssAnchorPositionRouteImport.update({
+    id: '/experiments/css-anchor-position',
+    path: '/experiments/css-anchor-position',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ExperimentsSlugRoute = ExperimentsSlugRouteImport.update({
   id: '/experiments/$slug',
   path: '/experiments/$slug',
@@ -33,30 +40,43 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/experiments/$slug': typeof ExperimentsSlugRoute
+  '/experiments/css-anchor-position': typeof ExperimentsCssAnchorPositionRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/experiments/$slug': typeof ExperimentsSlugRoute
+  '/experiments/css-anchor-position': typeof ExperimentsCssAnchorPositionRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/experiments/$slug': typeof ExperimentsSlugRoute
+  '/experiments/css-anchor-position': typeof ExperimentsCssAnchorPositionRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/experiments/$slug'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/experiments/$slug'
+    | '/experiments/css-anchor-position'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/experiments/$slug'
-  id: '__root__' | '/' | '/about' | '/experiments/$slug'
+  to: '/' | '/about' | '/experiments/$slug' | '/experiments/css-anchor-position'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/experiments/$slug'
+    | '/experiments/css-anchor-position'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ExperimentsSlugRoute: typeof ExperimentsSlugRoute
+  ExperimentsCssAnchorPositionRoute: typeof ExperimentsCssAnchorPositionRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -75,6 +95,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/experiments/css-anchor-position': {
+      id: '/experiments/css-anchor-position'
+      path: '/experiments/css-anchor-position'
+      fullPath: '/experiments/css-anchor-position'
+      preLoaderRoute: typeof ExperimentsCssAnchorPositionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/experiments/$slug': {
       id: '/experiments/$slug'
       path: '/experiments/$slug'
@@ -89,6 +116,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ExperimentsSlugRoute: ExperimentsSlugRoute,
+  ExperimentsCssAnchorPositionRoute: ExperimentsCssAnchorPositionRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

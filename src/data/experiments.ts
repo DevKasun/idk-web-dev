@@ -22,5 +22,15 @@ export const experiments: Experiment[] = [
 		addedAt: '2026-05-17',
 		browserSupport: 'Chrome 111+, Safari 18+, Firefox 130+',
 	},
+	{
+		slug: 'css-anchor-position',
+		title: 'CSS Anchor Position',
+		description:
+			'Position elements relative to other elements with declarative CSS — no JS positioning math required.',
+		tags: ['CSS'],
+		status: 'experimental',
+		addedAt: '2026-06-02',
+		browserSupport: 'Chrome 125+, Safari TP, Firefox behind flag',
+	},
 	// 👇 Add more experiments here — each entry auto-renders a card on the homepage.
 ];
