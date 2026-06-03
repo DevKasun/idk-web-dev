@@ -28,9 +28,9 @@ export const experiments: Experiment[] = [
 		description:
 			'Position elements relative to other elements with declarative CSS — no JS positioning math required.',
 		tags: ['CSS'],
-		status: 'experimental',
+		status: 'stable',
 		addedAt: '2026-06-02',
-		browserSupport: 'Chrome 125+, Safari TP, Firefox behind flag',
+		browserSupport: 'Chrome 125+, Safari 26.0+, Firefox 147+',
 	},
 	// 👇 Add more experiments here — each entry auto-renders a card on the homepage.
 ];

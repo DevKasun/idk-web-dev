@@ -287,3 +287,16 @@ body,
   margin-inline: auto;
   padding-inline: 1.25rem;
 }
+
+
+.exp-anchor {
+  anchor-name: --exp-anchor;
+}
+
+.positioned-anchor-element {
+  position-anchor: --exp-anchor;
+  position-area: top;
+  inset-block-start: anchor(top);
+  inset-inline-start: anchor(right);
+  margin-bottom: 0.5rem;
+}
