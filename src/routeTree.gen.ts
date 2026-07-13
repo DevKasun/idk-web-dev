@@ -13,6 +13,8 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ExperimentsViewTransitionApiIndexRouteImport } from './routes/experiments/view-transition-api/index'
 import { Route as ExperimentsCssAnchorPositionIndexRouteImport } from './routes/experiments/css-anchor-position/index'
+import { Route as ExperimentsViewTransitionApiBlogIndexRouteImport } from './routes/experiments/view-transition-api/blog/index'
+import { Route as ExperimentsViewTransitionApiBlogSlugRouteImport } from './routes/experiments/view-transition-api/blog/$slug'
 
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
@@ -36,18 +38,34 @@ const ExperimentsCssAnchorPositionIndexRoute =
     path: '/experiments/css-anchor-position/',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ExperimentsViewTransitionApiBlogIndexRoute =
+  ExperimentsViewTransitionApiBlogIndexRouteImport.update({
+    id: '/experiments/view-transition-api/blog/',
+    path: '/experiments/view-transition-api/blog/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ExperimentsViewTransitionApiBlogSlugRoute =
+  ExperimentsViewTransitionApiBlogSlugRouteImport.update({
+    id: '/experiments/view-transition-api/blog/$slug',
+    path: '/experiments/view-transition-api/blog/$slug',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/experiments/css-anchor-position/': typeof ExperimentsCssAnchorPositionIndexRoute
   '/experiments/view-transition-api/': typeof ExperimentsViewTransitionApiIndexRoute
+  '/experiments/view-transition-api/blog/$slug': typeof ExperimentsViewTransitionApiBlogSlugRoute
+  '/experiments/view-transition-api/blog/': typeof ExperimentsViewTransitionApiBlogIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/experiments/css-anchor-position': typeof ExperimentsCssAnchorPositionIndexRoute
   '/experiments/view-transition-api': typeof ExperimentsViewTransitionApiIndexRoute
+  '/experiments/view-transition-api/blog/$slug': typeof ExperimentsViewTransitionApiBlogSlugRoute
+  '/experiments/view-transition-api/blog': typeof ExperimentsViewTransitionApiBlogIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -55,6 +73,8 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/experiments/css-anchor-position/': typeof ExperimentsCssAnchorPositionIndexRoute
   '/experiments/view-transition-api/': typeof ExperimentsViewTransitionApiIndexRoute
+  '/experiments/view-transition-api/blog/$slug': typeof ExperimentsViewTransitionApiBlogSlugRoute
+  '/experiments/view-transition-api/blog/': typeof ExperimentsViewTransitionApiBlogIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -63,18 +83,24 @@ export interface FileRouteTypes {
     | '/about'
     | '/experiments/css-anchor-position/'
     | '/experiments/view-transition-api/'
+    | '/experiments/view-transition-api/blog/$slug'
+    | '/experiments/view-transition-api/blog/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
     | '/experiments/css-anchor-position'
     | '/experiments/view-transition-api'
+    | '/experiments/view-transition-api/blog/$slug'
+    | '/experiments/view-transition-api/blog'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/experiments/css-anchor-position/'
     | '/experiments/view-transition-api/'
+    | '/experiments/view-transition-api/blog/$slug'
+    | '/experiments/view-transition-api/blog/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -82,6 +108,8 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ExperimentsCssAnchorPositionIndexRoute: typeof ExperimentsCssAnchorPositionIndexRoute
   ExperimentsViewTransitionApiIndexRoute: typeof ExperimentsViewTransitionApiIndexRoute
+  ExperimentsViewTransitionApiBlogSlugRoute: typeof ExperimentsViewTransitionApiBlogSlugRoute
+  ExperimentsViewTransitionApiBlogIndexRoute: typeof ExperimentsViewTransitionApiBlogIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -114,6 +142,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ExperimentsCssAnchorPositionIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/experiments/view-transition-api/blog/': {
+      id: '/experiments/view-transition-api/blog/'
+      path: '/experiments/view-transition-api/blog'
+      fullPath: '/experiments/view-transition-api/blog/'
+      preLoaderRoute: typeof ExperimentsViewTransitionApiBlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/experiments/view-transition-api/blog/$slug': {
+      id: '/experiments/view-transition-api/blog/$slug'
+      path: '/experiments/view-transition-api/blog/$slug'
+      fullPath: '/experiments/view-transition-api/blog/$slug'
+      preLoaderRoute: typeof ExperimentsViewTransitionApiBlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -124,6 +166,10 @@ const rootRouteChildren: RootRouteChildren = {
     ExperimentsCssAnchorPositionIndexRoute,
   ExperimentsViewTransitionApiIndexRoute:
     ExperimentsViewTransitionApiIndexRoute,
+  ExperimentsViewTransitionApiBlogSlugRoute:
+    ExperimentsViewTransitionApiBlogSlugRoute,
+  ExperimentsViewTransitionApiBlogIndexRoute:
+    ExperimentsViewTransitionApiBlogIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
