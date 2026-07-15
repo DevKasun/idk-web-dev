@@ -41,10 +41,6 @@ function RouteComponent() {
                     View Transition API
                 </Link>
                 <span aria-hidden="true">›</span>
-                <Link to="/experiments/view-transition-api/blog" className="hover:text-(--text) transition-colors">
-                    Blog
-                </Link>
-                <span aria-hidden="true">›</span>
                 <span className="text-(--text)">{post.title}</span>
             </nav>
 
