@@ -45,14 +45,20 @@ function RouteComponent() {
             </nav>
 
             <article>
-                <time className="font-mono text-xs text-(--text-subtle)">
+                <time 
+                    className="font-mono text-xs text-(--text-subtle)"
+                    style={{ viewTransitionName: `blog-date-${post.slug}` }}
+                >
                     {new Date(post.date).toLocaleDateString("en-US", {
                         month: "short",
                         day: "numeric",
                         year: "numeric",
                     })}
                 </time>
-                <h1 className="mb-6 mt-2 text-3xl font-extrabold tracking-tight text-(--text) sm:text-4xl">
+                <h1 
+                    className="mb-6 mt-2 text-3xl font-extrabold tracking-tight text-(--text) sm:text-4xl"
+                    style={{ viewTransitionName: `blog-title-${post.slug}` }}
+                >
                     {post.title}
                 </h1>
                 <div className="prose prose-neutral dark:prose-invert max-w-none">
@@ -63,6 +69,7 @@ function RouteComponent() {
             <div className="mt-10 border-t border-(--border) pt-6">
                 <Link
                     to="/experiments/view-transition-api/blog"
+                    viewTransition
                     className="text-sm text-(--text-muted) hover:text-(--text) transition-colors"
                 >
                     ← Back to blog

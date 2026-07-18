@@ -300,3 +300,27 @@ body,
   inset-inline-start: anchor(right);
   margin-bottom: 0.5rem;
 }
+
+
+
+/* Smooth the default cross-fade */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 400ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Optional: Customize the shared element transitions */
+::view-transition-group(*) {
+  animation-duration: 500ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Ensure the blog card elements animate smoothly */
+::view-transition-old(blog-date-*),
+::view-transition-new(blog-date-*),
+::view-transition-old(blog-title-*),
+::view-transition-new(blog-title-*) {
+  animation-duration: 500ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
