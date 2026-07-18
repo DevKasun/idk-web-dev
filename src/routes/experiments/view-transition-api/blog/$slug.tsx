@@ -9,7 +9,7 @@ export const Route = createFileRoute(
         if (!post) {
             throw new Error("Post not found");
         }
-        return post;
+        return { slug: post.slug };
     },
     component: RouteComponent,
     notFoundComponent: () => (
@@ -30,14 +30,15 @@ export const Route = createFileRoute(
 });
 
 function RouteComponent() {
-    const post = Route.useLoaderData();
+    const { slug } = Route.useLoaderData();
+    const post = blogPosts.find((p) => p.slug === slug)!;
 
     return (
         <main className="page-container py-10">
             <nav className="mb-6 flex items-center gap-2 text-sm text-(--text-muted)" aria-label="Breadcrumb">
-                <Link to="/" className="hover:text-(--text) transition-colors">Home</Link>
+                <Link to="/" className="hover:text-(--text) transition-colors" viewTransition>Home</Link>
                 <span aria-hidden="true">›</span>
-                <Link to="/experiments/view-transition-api" className="hover:text-(--text) transition-colors">
+                <Link to="/experiments/view-transition-api" viewTransition className="hover:text-(--text) transition-colors">
                     View Transition API
                 </Link>
                 <span aria-hidden="true">›</span>
