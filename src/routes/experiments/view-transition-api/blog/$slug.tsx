@@ -9,7 +9,7 @@ export const Route = createFileRoute(
         if (!post) {
             throw new Error("Post not found");
         }
-        return post;
+        return { slug: post.slug };
     },
     component: RouteComponent,
     notFoundComponent: () => (
@@ -30,33 +30,36 @@ export const Route = createFileRoute(
 });
 
 function RouteComponent() {
-    const post = Route.useLoaderData();
+    const { slug } = Route.useLoaderData();
+    const post = blogPosts.find((p) => p.slug === slug)!;
 
     return (
         <main className="page-container py-10">
             <nav className="mb-6 flex items-center gap-2 text-sm text-(--text-muted)" aria-label="Breadcrumb">
-                <Link to="/" className="hover:text-(--text) transition-colors">Home</Link>
+                <Link to="/" className="hover:text-(--text) transition-colors" viewTransition>Home</Link>
                 <span aria-hidden="true">›</span>
-                <Link to="/experiments/view-transition-api" className="hover:text-(--text) transition-colors">
+                <Link to="/experiments/view-transition-api" viewTransition className="hover:text-(--text) transition-colors">
                     View Transition API
-                </Link>
-                <span aria-hidden="true">›</span>
-                <Link to="/experiments/view-transition-api/blog" className="hover:text-(--text) transition-colors">
-                    Blog
                 </Link>
                 <span aria-hidden="true">›</span>
                 <span className="text-(--text)">{post.title}</span>
             </nav>
 
             <article>
-                <time className="font-mono text-xs text-(--text-subtle)">
+                <time 
+                    className="font-mono text-xs text-(--text-subtle)"
+                    style={{ viewTransitionName: `blog-date-${post.slug}` }}
+                >
                     {new Date(post.date).toLocaleDateString("en-US", {
                         month: "short",
                         day: "numeric",
                         year: "numeric",
                     })}
                 </time>
-                <h1 className="mb-6 mt-2 text-3xl font-extrabold tracking-tight text-(--text) sm:text-4xl">
+                <h1 
+                    className="mb-6 mt-2 text-3xl font-extrabold tracking-tight text-(--text) sm:text-4xl"
+                    style={{ viewTransitionName: `blog-title-${post.slug}` }}
+                >
                     {post.title}
                 </h1>
                 <div className="prose prose-neutral dark:prose-invert max-w-none">
@@ -67,6 +70,7 @@ function RouteComponent() {
             <div className="mt-10 border-t border-(--border) pt-6">
                 <Link
                     to="/experiments/view-transition-api/blog"
+                    viewTransition
                     className="text-sm text-(--text-muted) hover:text-(--text) transition-colors"
                 >
                     ← Back to blog
