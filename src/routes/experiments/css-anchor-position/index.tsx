@@ -1,8 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { experiments } from "../../../data/experiments";
 import ExperimentLayout from "../../../components/ExperimentLayout";
+import anchorPositionCss from "./styles.css?url";
 
 export const Route = createFileRoute("/experiments/css-anchor-position/")({
+    head: () => ({
+        links: [{ rel: "stylesheet", href: anchorPositionCss }],
+    }),
     component: CssAnchorPosition,
 });
 

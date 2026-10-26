@@ -1,5 +1,6 @@
 import { Link } from '@tanstack/react-router';
 import type { Experiment, ExperimentTag } from '../data/experiments';
+import './ExperimentLayout.css';
 
 const TAG_COLORS: Record<ExperimentTag, string> = {
 	CSS: 'bg-[var(--tag-css-bg)] text-[var(--tag-css-text)] border-[var(--tag-css-border)]',

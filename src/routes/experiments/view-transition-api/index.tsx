@@ -2,8 +2,12 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { experiments } from "../../../data/experiments";
 import { blogPosts } from "../../../data/blog";
 import ExperimentLayout from "../../../components/ExperimentLayout";
+import viewTransitionCss from "./styles.css?url";
 
 export const Route = createFileRoute("/experiments/view-transition-api/")({
+    head: () => ({
+        links: [{ rel: "stylesheet", href: viewTransitionCss }],
+    }),
     component: ViewTransitions,
 });
 

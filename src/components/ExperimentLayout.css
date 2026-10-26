@@ -1,0 +1,11 @@
+/* ════════════════════════════════════════════════════════════════════
+   EXPERIMENT PAGE LAYOUT
+   Imported by src/components/ExperimentLayout.tsx
+   ════════════════════════════════════════════════════════════════════ */
+
+.demo-shell {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}

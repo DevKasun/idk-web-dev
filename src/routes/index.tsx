@@ -4,8 +4,14 @@ import { useState } from 'react';
 import { createFileRoute } from '@tanstack/react-router';
 import ExperimentCard from '../components/ExperimentCard';
 import { experiments, type ExperimentTag } from '../data/experiments';
+import homeCss from './home.css?url';
 
-export const Route = createFileRoute('/')({ component: HomePage });
+export const Route = createFileRoute('/')({
+	head: () => ({
+		links: [{ rel: 'stylesheet', href: homeCss }],
+	}),
+	component: HomePage,
+});
 
 type FilterTag = 'All' | ExperimentTag;
 const FILTER_TAGS: FilterTag[] = ['All', 'CSS', 'HTML', 'JS', 'API'];

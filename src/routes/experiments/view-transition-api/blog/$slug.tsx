@@ -1,9 +1,18 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { blogPosts } from "../../../../data/blog";
+import viewTransitionCss from "../styles.css?url";
 
 export const Route = createFileRoute(
     "/experiments/view-transition-api/blog/$slug",
 )({
+    head: () => ({
+        links: [
+            {
+                rel: "stylesheet",
+                href: viewTransitionCss,
+            },
+        ],
+    }),
     loader: ({ params }) => {
         const post = blogPosts.find((p) => p.slug === params.slug);
         if (!post) {

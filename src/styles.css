@@ -1,6 +1,18 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+/* ════════════════════════════════════════════════════════════════════
+   GLOBAL STYLES
+   Tailwind entry, design tokens, base resets and primitives that are
+   shared across multiple pages/components.
+
+   Page/feature specific styles live next to their route:
+     · src/routes/home.css
+     · src/routes/experiments/css-anchor-position/styles.css
+     · src/routes/experiments/view-transition-api/styles.css
+     · src/components/ExperimentLayout.css
+   ════════════════════════════════════════════════════════════════════ */
+
 /* ─── Design Tokens ────────────────────────────────────────────────── */
 @theme {
   --font-sans: sans-serif;
@@ -112,133 +124,21 @@ body,
   min-height: 100dvh;
 }
 
-/* ─── Masonry Grid ─────────────────────────────────────────────────── */
-.masonry-grid {
-  columns: 1;
-  column-gap: 1.25rem;
+/* ─── Shared primitives ────────────────────────────────────────────── */
+.page-container {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
 }
 
-@media (min-width: 640px) {
-  .masonry-grid {
-    columns: 2;
-  }
+.gradient-text {
+  background: var(--accent-color);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-@media (min-width: 1024px) {
-  .masonry-grid {
-    columns: 3;
-  }
-}
-
-.masonry-item {
-  break-inside: avoid;
-  margin-bottom: 1.25rem;
-}
-
-/* ─── Hero Gradient Orbs ───────────────────────────────────────────── */
-.hero-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.35;
-  animation: orb-drift 8s ease-in-out infinite alternate;
-  pointer-events: none;
-}
-
-.hero-orb-1 {
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, #6366f1, transparent 70%);
-  top: -100px;
-  left: -80px;
-  animation-delay: 0s;
-}
-
-.hero-orb-2 {
-  width: 350px;
-  height: 350px;
-  background: radial-gradient(circle, #a855f7, transparent 70%);
-  top: -60px;
-  right: 10%;
-  animation-delay: -3s;
-}
-
-.hero-orb-3 {
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, #ec4899, transparent 70%);
-  bottom: -80px;
-  right: -60px;
-  animation-delay: -5s;
-}
-
-@keyframes orb-drift {
-  0% {
-    transform: translate(0, 0) scale(1);
-  }
-  100% {
-    transform: translate(30px, 20px) scale(1.08);
-  }
-}
-
-.hero-banner {
-  background-image: url("../public/image/idk-dev2-16-9.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.hero-banner::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: light-dark(rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0.8));
-}
-
-/* ─── Cursor blink ─────────────────────────────────────────────────── */
-.cursor-blink {
-  display: inline-block;
-  width: 3px;
-  height: 1em;
-  background: var(--accent-start);
-  border-radius: 2px;
-  margin-left: 4px;
-  vertical-align: middle;
-  animation: blink 1.1s step-end infinite;
-}
-
-@keyframes blink {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-}
-
-/* ─── Filter pill active state ─────────────────────────────────────── */
-.filter-pill {
-  transition:
-    background 0.15s ease,
-    color 0.15s ease,
-    box-shadow 0.15s ease,
-    transform 0.15s ease;
-}
-
-.filter-pill:hover {
-  transform: translateY(-1px);
-}
-
-.filter-pill.is-active {
-  background: var(--accent-gradient);
-  color: light-dark(#000, #fff);
-  box-shadow: 0 2px 6px rgba(99, 102, 241, 0.2);
-}
-
-/* ─── Experiment card ──────────────────────────────────────────────── */
+/* Shared by the experiment grid (home) and blog listings */
 .experiment-card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -260,67 +160,6 @@ body,
     var(--glow-card);
 }
 
-/* ─── Gradient text ────────────────────────────────────────────────── */
-.gradient-text {
-  background: var(--accent-color);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* ─── Code font ────────────────────────────────────────────────────── */
 .font-mono {
   font-family: var(--font-mono);
-}
-
-/* ─── Experiment demo page layout ─────────────────────────────────── */
-.demo-shell {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
-
-/* ─── Page container ───────────────────────────────────────────────── */
-.page-container {
-  max-width: 1200px;
-  margin-inline: auto;
-  padding-inline: 1.25rem;
-}
-
-
-.exp-anchor {
-  anchor-name: --exp-anchor;
-}
-
-.positioned-anchor-element {
-  position-anchor: --exp-anchor;
-  position-area: top;
-  inset-block-start: anchor(top);
-  inset-inline-start: anchor(right);
-  margin-bottom: 0.5rem;
-}
-
-
-
-/* Smooth the default cross-fade */
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation-duration: 400ms;
-  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Optional: Customize the shared element transitions */
-::view-transition-group(*) {
-  animation-duration: 500ms;
-  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Ensure the blog card elements animate smoothly */
-::view-transition-old(blog-date-*),
-::view-transition-new(blog-date-*),
-::view-transition-old(blog-title-*),
-::view-transition-new(blog-title-*) {
-  animation-duration: 500ms;
-  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
